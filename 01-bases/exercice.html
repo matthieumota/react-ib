@@ -58,7 +58,12 @@
                             <li key={index} style={{ listStyleType: 'none' }}>- {note}</li>
                         )}
                     </ul>
+                    <p>
+                        Moyenne: {notes.reduce((previous, current) => previous + current) / notes.length}
+                    </p>
                     <p>Afficher le contenu de la constante person sous la forme person.value</p>
+                    {JSON.stringify(person)}
+                    {Object.values(person)}
                     <p>{person.firstname} {person.lastname} a {person.age} ans.</p>
                     <p>Afficher le contenu de la constante actionsList</p>
                     {actionsList}
