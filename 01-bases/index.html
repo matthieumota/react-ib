@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        const name = 'Fiorella';
+        const user = {
+            name, avatar: 'https://i.pravatar.cc/100',
+        };
+
+        // function upper(user) {
+        //     return user.name.toUpperCase();
+        // }
+        const upper = (user) => user.name.toUpperCase();
+
+        const Welcome = ({ name, age }) => {
+            if (age) {
+                return <h1>Bonjour {name ?? 'Inconnu'}, tu as {age + 1} ans.</h1>;
+            }
+
+            return (
+                <>
+                    {/* Condition à la volée */}
+                    {name && <h1>Bonjour {name}</h1>}
+                </>
+            );
+        };
+
+        const Card = ({ children, color }) => {
+            return (
+                <div>
+                    {children}
+                </div>
+            );
+        };
+
+        const title = <h1>Liste</h1>;
+        const peoples = ['Marina', 'Fiorella', 'Matthieu'/*, <li>Toto</li>*/];
+
+        const App = () => {
+            return (
+                <> {/* <> est un fragment (une "div vide") */}
+                    <h1>Hello {upper(user)}</h1>
+                    <img src={user.avatar} alt={user.name} className="image" style={{ borderRadius: 50 }} />
+                    <p>Il est {new Date().toLocaleTimeString()}</p>
+                    <Welcome name="Fiorella" age={3} />
+                    <Welcome name="Toto" />
+                    <Welcome age={20} />
+                    <Card color="blue">
+                        <h1>Contenu du composant</h1>
+                        <Welcome name="Titi" />
+                    </Card>
+                    {title}
+                    <ul>
+                        {peoples.filter(p => p[0] === 'M').map((people, index) =>
+                            <li key={index}>{people}</li>
+                        )}
+                    </ul>
+                </>
+            )
+        }
+
+        root.render(<App />);
+
+        setInterval(() => root.render(<App />), 1000);
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this page for starting a new React project with JSX:
+      https://react.dev/learn/start-a-new-react-project
+
+      Read this page for adding React with JSX to an existing project:
+      https://react.dev/learn/add-react-to-an-existing-project
+    -->
+  </body>
+</html>

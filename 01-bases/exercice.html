@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Exo1() {
+            const song = 'Chachacha';
+            const numberOfGoodReasonsToBeHere = 150;
+            const disabledButton = <button disabled>Bouton</button>
+
+            return (
+                <div>
+                    <p>Afficher ici le contenu de la variable song</p>
+                    <p>{song}</p>
+                    <p>Afficher ici le contenu de numberOfGoodReasonsToBeHere</p>
+                    <p>{numberOfGoodReasonsToBeHere}</p>
+                    <p>Afficher ici le contenu de disabledButton</p>
+                    {disabledButton}
+                </div>
+            );
+        }
+
+        function Exo2() {
+            const notes = [0, 4, 10, 20, 15];
+
+            const person = {
+                firstname: 'Boulette',
+                lastname: 'Fromage',
+                age: 15,
+            };
+
+            const actionsList = (
+                <div>
+                    <button>Modifier</button>
+                    <button>Annuler</button>
+                </div>
+            );
+
+            return (
+                <div>
+                    <p>
+                        Afficher le contenu du tableau notes sous forme de liste
+                        <a href="https://react.dev/learn/rendering-lists">Documentation sur l'affichage des listes</a>
+                    </p>
+                    <ul>
+                        {notes.map((note, index) =>
+                            <li key={index} style={{ listStyleType: 'none' }}>- {note}</li>
+                        )}
+                    </ul>
+                    <p>Afficher le contenu de la constante person sous la forme person.value</p>
+                    <p>{person.firstname} {person.lastname} a {person.age} ans.</p>
+                    <p>Afficher le contenu de la constante actionsList</p>
+                    {actionsList}
+                </div>
+            )
+        }
+
+        function Exo4() {
+            const cat = 'Ronron';
+
+            const persons = [
+                {
+                    name: 'Charly',
+                    age: 66,
+                    job: {
+                        name: 'Styliste',
+                        since: '29 Avril 2020',
+                    },
+                },
+                {
+                    name: 'Charly',
+                    age: 25,
+                    job: {
+                        name: 'Barman',
+                        since: '29 Avril 5050',
+                    },
+                }
+            ];
+
+            const shoppingCart = [
+                {
+                    name: 'Concombre',
+                    type: 'Legume',
+                    warehouse: {
+                        name: 'MisterEpices',
+                        size: 'petit',
+                    }
+                },
+                {
+                    name: 'Courgette',
+                    type: 'Legume',
+                    warehouse: {
+                        name: 'MisterEpices',
+                        size: 'petit',
+                    }
+                },
+                {
+                    name: 'Endive',
+                    type: 'Beurk',
+                    warehouse: {
+                        name: 'Parking Souterrain',
+                        size: 'Grand',
+                    }
+                },
+                {
+                    name: 'Steak',
+                    type: 'Frais',
+                },
+                {
+                    name: 'Sanglier',
+                    type: null,
+                    warehouse: null,
+                }
+            ];
+
+            return (
+                <div>
+                    <p>
+                        <a href="https://react.dev/learn/conditional-rendering#logical-and-operator-">
+                            Documentation sur le rendu conditionnel à la volée en JSX
+                        </a>
+                    </p>
+                    <p>
+                        Après avoir consulté la documentation, afficher chat de manière conditionnelle seulement
+                        si son nom est différent de "Ronron" et qu'il n'est pas nul et avec la notation &&
+                    </p>
+                    <p>{cat !== 'Ronron' && cat}</p>
+                    <p>
+                        Afficher les propriétés de chaque personne à l'aide de map
+                        Pour chaque personne afficher son âge de manière conditionnelle en utilisant ? et :
+                    </p>
+                    <p>
+                        Afficher les propriétés de chaque personne à l'aide de map
+                        Pour chaque personne afficher son âge de manière conditionnelle en utilisant ||
+                    </p>
+                    <ul>
+                        <li>
+                            Si l'âge de la personne est supérieur à 65, alors afficher "Senior"
+                        </li>
+                        <li>
+                            Sinon, afficher l'âge de la personne
+                        </li>
+                    </ul>
+                    <ul>
+                        {persons.map(person =>
+                            <li>
+                                {person.name}{' '}
+                                {person.job.name} depuis {person.job.since} <br />
+
+                                <p>Ternaire: {person.age > 65 ? 'Senior' : person.age}</p>
+                                <p>A la volée: {person.age > 65 && 'Senior' || person.age}</p>
+                            </li>    
+                        )}
+                    </ul>
+                    <p>Afficher tous les légumes dans une boucle map</p>
+                    <p>Pour chaque légume, afficher son magasin de manière conditionnelle avec && </p>
+                    <ul>
+                        {shoppingCart.map((vegetable, index) =>
+                            <li key={index}>
+                                {vegetable.name} {vegetable.type && <span>- {vegetable.type}</span>}
+                                {vegetable.warehouse &&
+                                    <div>
+                                        <p>{vegetable.warehouse.name} - {vegetable.warehouse.size}</p>
+                                    </div>
+                                }
+                            </li>
+                        )}
+                    </ul>
+                </div>
+            )
+        }
+
+        function MyApp() {
+            return (
+                <>
+                    <h2>Exo 1</h2>
+                    <Exo1 />
+                    <h2>Exo 2</h2>
+                    <Exo2 />
+                    <h2>Exo 4</h2>
+                    <Exo4 />
+                </>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this page for starting a new React project with JSX:
+      https://react.dev/learn/start-a-new-react-project
+
+      Read this page for adding React with JSX to an existing project:
+      https://react.dev/learn/add-react-to-an-existing-project
+    -->
+</body>
+
+</html>
