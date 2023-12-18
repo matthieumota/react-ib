@@ -1,4 +1,5 @@
 import Button from './Button'
+import List from './List'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Button>Contact</Button>
       <Button>Valider</Button>
       <Button>Demande</Button>
+      <List />
     </>
   )
 }
