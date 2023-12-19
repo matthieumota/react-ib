@@ -6,6 +6,7 @@ import Counter from './exercices/Counter'
 import Props2 from './exercices/Props2'
 import Props3 from './exercices/Props3'
 import Props5 from './exercices/Props5'
+import Lifecycle2 from './exercices/Lifecycle2'
 
 function App() {
   const [show, setShow] = useState(true);
@@ -30,6 +31,7 @@ function App() {
       <button onClick={() => setShow(!show)}>
         Cacher / afficher
       </button>
+      <Lifecycle2 />
     </>
   )
 }
