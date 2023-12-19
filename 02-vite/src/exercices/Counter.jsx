@@ -3,7 +3,11 @@ import { useState } from 'react';
 function Counter({ init = 0, max = Infinity }) {
   const [value, setValue] = useState(init);
 
-  const increment = () => setValue(value + 1);
+  const increment = () => {
+    setValue((value) => value + 1); // Asynchrone...
+    setValue((value) => value + 1);
+    setValue((value) => value + 1);
+  };
   const decrement = () => setValue(value - 1);
 
   return (

@@ -6,7 +6,9 @@ import Counter from './exercices/Counter'
 import Props2 from './exercices/Props2'
 import Props3 from './exercices/Props3'
 import Props5 from './exercices/Props5'
+import CounterPlus from './exercices/CounterPlus'
 import Lifecycle2 from './exercices/Lifecycle2'
+import StateChallenge from './exercices/StateChallenge'
 
 function App() {
   const [show, setShow] = useState(true);
@@ -19,15 +21,17 @@ function App() {
       <Button>Demande</Button>
       <List />
 
-      {/*<h2>Exercices props</h2>
-      <Props2 />
+      <h2>Exercices props</h2>
+      {/*<Props2 />
       <Props3 />
-      <Props5 />
+      <Props5 />*/}
       <Counter />
-      <Counter init={3} max={10} />*/}
+      <Counter init={3} max={10} />
+      <CounterPlus step={1} frequency={1000} />
+      <StateChallenge />
 
       <h2>Le cycle de vie</h2>
-      {show && <Clock />}
+      {/*show && <Clock />*/}
       <button onClick={() => setShow(!show)}>
         Cacher / afficher
       </button>
