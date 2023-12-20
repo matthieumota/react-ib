@@ -11,12 +11,20 @@ import Lifecycle2 from './exercices/Lifecycle2'
 import StateChallenge from './exercices/StateChallenge'
 import Ajax from './Ajax'
 import Ajax1 from './exercices/Ajax1'
+import { NavLink, Outlet } from 'react-router-dom'
 
 function App() {
   const [show, setShow] = useState(true);
 
   return (
     <>
+      <nav>
+        <NavLink to="/">Accueil</NavLink>
+        <NavLink to="/a-propos">A propos</NavLink>
+      </nav>
+
+      <Outlet />
+
       <h1>Salut React</h1>
       <Button>Contact</Button>
       <Button>Valider</Button>
