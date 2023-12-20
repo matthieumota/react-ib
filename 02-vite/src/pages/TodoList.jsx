@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, allTodos, countTodo } from '../store';
+import { addTodo, allTodos, countTodo, deleteTodo, toggleTodo } from '../store';
 
 const Header = () => {
   const count = useSelector(countTodo)
@@ -10,7 +10,18 @@ const Header = () => {
   )
 }
 
-const Todo = ({ todo }) => <div>{todo.name}</div>
+const Todo = ({ todo }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      {todo.name}
+      <input type="checkbox" checked={todo.done} onChange={() => dispatch(toggleTodo(todo.id))} />
+      <button onClick={() => dispatch(deleteTodo(todo.id))}>X</button>
+    </div>
+  )
+}
+
 const TodoForm = ({ onAdded }) => {
   const dispatch = useDispatch();
   const [newTodo, setNewTodo] = useState('');

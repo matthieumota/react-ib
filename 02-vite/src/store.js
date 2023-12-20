@@ -17,6 +17,13 @@ const todoSlice = createSlice({
       const newTodo = { id, name: action.payload, done: false }
       state.push(newTodo)
     },
+    deleteTodo: (state, action) => {
+      return state.filter(t => t.id !== action.payload);
+    },
+    toggleTodo: (state, action) => {
+      const todo = state.find(t => t.id === action.payload);
+      todo.done = !todo.done;
+    }
   },
 
   // Les sélecteurs permettent de "filtrer" les données
@@ -28,7 +35,7 @@ const todoSlice = createSlice({
 });
 
 export const { allTodos, countTodo, completedTodos } = todoSlice.selectors
-export const { addTodo } = todoSlice.actions
+export const { addTodo, deleteTodo, toggleTodo } = todoSlice.actions
 
 // On va créer le store global
 export const store = configureStore({
