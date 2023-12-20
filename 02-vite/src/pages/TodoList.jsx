@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, allTodos, countTodo, deleteTodo, toggleTodo } from '../store';
+import { addTodo, allTodos, countTodo, deleteTodo, fetchTodos, pending, toggleTodo } from '../store';
 
 const Header = () => {
   const count = useSelector(countTodo)
@@ -42,11 +42,18 @@ const TodoForm = ({ onAdded }) => {
 
 function TodoList() {
   const todos = useSelector(allTodos)
+  const loading = useSelector(pending)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchTodos())
+  }, [])
 
   return (
     <>
       <Header />
 
+      {loading && 'Chargement...'}
       {todos.map(todo =>
         <Todo key={todo.id} todo={todo} />
       )}
