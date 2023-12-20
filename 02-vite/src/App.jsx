@@ -10,15 +10,13 @@ import CounterPlus from './exercices/CounterPlus'
 import Lifecycle2 from './exercices/Lifecycle2'
 import StateChallenge from './exercices/StateChallenge'
 import Ajax from './Ajax'
+import Ajax1 from './exercices/Ajax1'
 
 function App() {
   const [show, setShow] = useState(true);
 
   return (
     <>
-      <h2>Ajax</h2>
-      <Ajax />
-
       <h1>Salut React</h1>
       <Button>Contact</Button>
       <Button>Valider</Button>
@@ -40,6 +38,10 @@ function App() {
         Cacher / afficher
       </button>
       {/*<Lifecycle2 />*/}
+
+      <h2>Ajax</h2>
+      <Ajax />
+      <Ajax1 />
     </>
   )
 }
